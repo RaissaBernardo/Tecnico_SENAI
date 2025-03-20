@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa do SENAI São Carlos</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="imagens/logoSenaiWhite.png" alt="">
+        <div>
+            <p onclick="mostrarInformacoes('mapa')" class="headerButtons">Mapa</p>
+            <p><a href="regras.html" class="headerButtons">Regras</a></p>
+            <p> <a href="contato.html" class="headerButtons">Contatos</a></p>
+            <p onclick="mostrarInformacoes('duvidas')" class="headerButtons">Dúvidas</p>
+            <p><a href="old.html" class="headerButtons">Informações Importantes</a></p>
+        </div>
+    </header>
+    <section class="imgprincipal">
+        <div class="hero-content">
+            <h1>Bem-vindo ao SENAI</h1>
+            <p>Educação profissional que transforma vidas</p>
+        </div>
+    </section>
+
+    <!-- Carrossel de imagens -->
+    <!-- Carrossel de imagens 
+    <div id="carrossel" class="carrossel-container">
+        <img class="carrossel-img" src="/imagens/fundo.png" alt="Imagem 1">
+        <img class="carrossel-img" src="/imagens/maquinas.png" alt="Imagem 2">
+        <img class="carrossel-img" src="/imagens/biblioteca.png" alt="Imagem 3">
+        <img class="carrossel-img" src="imagens/fotoSenaiDois.jpg" alt="Imagem 1">
+        <img class="carrossel-img" src="imagens/fotoSenaiUm.jpg" alt="Imagem 2">
+        <img class="carrossel-img" src="imagens/fotoSenaiTres.jpg" alt="Imagem 3">-->
+
+    <!-- Submenu para escolher o mapa -->
+    <div id="submenu-mapa" style="display: none;">
+        <button onclick="carregarPlanta('pisoSuperior')">Piso Superior</button>
+        <button onclick="carregarPlanta('pisoInferior')">Piso Inferior</button>
+        <button onclick="carregarPlanta('blocoGeral')">Bloco Geral</button>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div id="conteudo">
+        <div id="loading" style="display:none;">Carregando...</div>
+        <div id="informacao"></div>
+    </div>
+
+    <!-- Mapa -->
+    <div id="map" style="width: 100%; height: 60vh; display: none;"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
