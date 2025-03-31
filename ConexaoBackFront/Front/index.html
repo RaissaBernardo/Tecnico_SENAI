@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="nome" placeholder="Nome"> <br />
+        <input type="text" id="desc" placeholder="Descrição"> <br />
+        <input type="text" id="quant" placeholder="Quantidade"> <br /> <br />
+        <input type="button" onclick="chamaLogin()" name="enviar" value="Enviar"> <br />
+        <input type="button" onclick="preencheProdutosBanco()" name="carregar" value="Carregar"><br />
+        <input type="button" onclick="deletar(id)" name="deletar" value="Deletar">
+
+        <div id="valor"></div>
+        <div id="produtos-banco"></div>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-corpo"></tbody>
+    </table>
+</body>
+<script>
+    function chamaLogin(){
+        let nome = document.getElementById("nome").value;
+        let descricao = document.getElementById("desc").value;
+        let quantidade = document.getElementById("quant").value;
+
+        fetch("http://localhost:8080/produto", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, descricao, quantidade })
+        }).then(() => preencheProdutosBanco());
+    }
+
+    function preencheProdutosBanco(){
+        let produtoBanco = document.getElementById("produtos-banco");
+
+        fetch("http://localhost:8080/produto")
+        .then((response) => response.json())
+        .then((dados) => {
+            (produtoBanco.innerHTML = JSON.stringify(dados))
+            coloca(dados);
+        })
+        .catch((error) => console.error("Erro: ", error));
+    }
+
+    function coloca(dados) {
+        let tabela = document.getElementById("tabela-corpo");
+
+        for (let i = 0; i < dados.length; i++) {
+            let linha = `<tr>
+                <td>${dados[i].id}</td>
+                <td>${dados[i].nome}</td>
+                <td>${dados[i].descricao}</td>
+                <td>${dados[i].quantidade}</td>
+                <td><button onclick="deletar(${dados[i].id})">Excluir</button></td>
+            </tr>`;
+            tabela.innerHTML += linha;
+        }
+    }
+
+    function deletar(id) {
+        fetch(`http://localhost:8080/produto/${id}`, {
+            method: "DELETE"
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao deletar");
+            }
+            return response.json();
+        })
+        .then(() => preencheProdutosBanco())    
+        .catch(error => console.error("Erro:", error));
+    }
+</script>
+</html>
