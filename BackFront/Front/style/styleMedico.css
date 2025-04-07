@@ -1,0 +1,24 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+  }
+
+  input, button {
+    padding: 8px;
+    margin: 5px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  #filtro {
+    margin-top: 20px;
+  }

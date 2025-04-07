@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medico</title>
+    <script src="script/scriptMedico.js" defer></script>
+    <link rel="stylesheet" href="style/styleMedico.css">
+</head>
+<body>
+    <h1>Consultas do Médico</h1>
+
+    <label for="medicoId">Digite seu ID:</label>
+    <input type="number" id="medicoId" placeholder="Ex: 1" />
+    <button onclick="buscarConsultas()">Ver Consultas</button>
+  
+    <div id="filtro" style="display:none;">
+      <label for="pesquisa">Filtrar por nome do paciente:</label>
+      <input type="text" id="pesquisa" oninput="filtrarConsultas()" placeholder="Ex: João" />
+    </div>
+  
+    <table id="tabelaConsultas" style="display:none;">
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabela"></tbody>
+    </table>
+  
+</body>
+</html>
