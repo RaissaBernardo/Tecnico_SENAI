@@ -11,6 +11,7 @@ Este repositório reúne todos os meus aprendizados, atividades, exercícios e p
 -  Projetos integradores e desafios
 -  Anotações e resumos de conteúdos estudados
 
+
 O objetivo deste repositório é registrar minha evolução como desenvolvedor e compartilhar um pouco do que venho aprendendo durante o curso.
 
 ---
