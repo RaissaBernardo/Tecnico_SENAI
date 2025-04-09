@@ -1,4 +1,63 @@
-document.addEventListener("DOMContentLoaded", () => {
+async function buscarConsultasPaciente() {
+  const inputCPF = document.getElementById("cpfPaciente");
+  const tabela = document.getElementById("tabelaPaciente");
+  const infoPaciente = document.getElementById("infoPaciente");
+
+  if (!inputCPF || !tabela || !infoPaciente) {
+    console.error("❌ Elementos do DOM não encontrados!");
+    return;
+  }
+
+  const cpf = inputCPF.value.trim();
+
+  if (!cpf) {
+    alert("Por favor, insira o CPF do paciente.");
+    return;
+  }
+
+  console.log("🔎 Buscando consultas para CPF:", cpf);
+
+  try {
+    const res = await fetch(`http://localhost:8080/consultas/paciente/${cpf}`);
+
+    if (!res.ok) {
+      throw new Error(`Erro ao buscar consultas: ${res.status}`);
+    }
+
+    const consultas = await res.json();
+    console.log("📋 Consultas recebidas:", consultas);
+
+    renderizarConsultasPaciente(consultas, tabela, infoPaciente);
+  } catch (err) {
+    console.error("❌ Erro ao buscar consultas:", err);
+    alert("Erro ao buscar consultas. Verifique o CPF e tente novamente.");
+  }
+}
+
+function renderizarConsultasPaciente(consultas, tabela, infoPaciente) {
+  tabela.innerHTML = "";
+
+  if (consultas.length === 0) {
+    tabela.innerHTML = "<tr><td colspan='2'>Nenhuma consulta encontrada.</td></tr>";
+  } else {
+    consultas.forEach(consulta => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${consulta.medicoNome}</td>
+        <td>${new Date(consulta.dataHora).toLocaleString("pt-BR")}</td>
+      `;
+      tabela.appendChild(tr);
+    });
+  }
+
+  infoPaciente.style.display = "block";
+}
+
+function irParaAgendamento() {
+  window.location.href = "agendar.html";
+}
+
+function main() {
   console.log("✅ DOM carregado");
 
   const btnBuscar = document.getElementById("btnBuscarConsultas");
@@ -8,52 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.warn("❌ Botão de buscar não encontrado!");
   }
-});
-
-function buscarConsultasPaciente() {
-  const cpf = document.getElementById("cpfPaciente").value;
-
-  if (!cpf) {
-    alert("Por favor, insira o CPF do paciente.");
-    return;
-  }
-
-  console.log("🔎 Buscando consultas para CPF:", cpf);
-
-  fetch(`http://localhost:8080/consultas/paciente/${cpf}`)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error("Erro ao buscar consultas");
-      }
-      return res.json();
-    })
-    .then(consultas => {
-      console.log("📋 Consultas recebidas:", consultas);
-
-      const tabela = document.getElementById("tabelaPaciente");
-      tabela.innerHTML = "";
-
-      if (consultas.length === 0) {
-        tabela.innerHTML = "<tr><td colspan='2'>Nenhuma consulta encontrada.</td></tr>";
-      } else {
-        consultas.forEach(consulta => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${consulta.medicoNome}</td>
-            <td>${new Date(consulta.dataHora).toLocaleString("pt-BR")}</td>
-          `;
-          tabela.appendChild(tr);
-        });
-      }
-
-      document.getElementById("infoPaciente").style.display = "block";
-    })
-    .catch(err => {
-      console.error("❌ Erro ao buscar consultas:", err);
-      alert("Erro ao buscar consultas. Verifique o CPF e tente novamente.");
-    });
 }
 
-function irParaAgendamento() {
-  window.location.href = "agendar.html";
-}
+document.addEventListener("DOMContentLoaded", main);
