@@ -1,6 +1,6 @@
 package com.medico.paciente.service;
 
-import com.medico.paciente.dto.ConsultaDTO;
+import com.medico.paciente.dto.ConsultaDTOResponse;
 import com.medico.paciente.entity.Consulta;
 import com.medico.paciente.entity.Medico;
 import com.medico.paciente.entity.Paciente;
@@ -27,7 +27,7 @@ public class ConsultaService {
     private PacienteRepository pacienteRepository;
 
     // Criar consulta com base no DTO (ligando médico e paciente existentes)
-    public Consulta criarConsulta(ConsultaDTO consultaDTO) {
+    public Consulta criarConsulta(ConsultaDTOResponse consultaDTO) {
         Medico medico = medicoRepository.findById(consultaDTO.getMedicoId())
                 .orElseThrow(() -> new RuntimeException("Médico não encontrado com ID: " + consultaDTO.getMedicoId()));
 
@@ -44,10 +44,10 @@ public class ConsultaService {
     }
 
     // Listar todas as consultas
-    public List<ConsultaDTO> listarConsultas() {
+    public List<ConsultaDTOResponse> listarConsultas() {
         return consultaRepository.findAllComMedicoEPaciente().stream()
-                .map(ConsultaDTO::fromEntity)
-                .sorted(Comparator.comparing(ConsultaDTO::getDataHora).reversed())
+                .map(ConsultaDTOResponse::fromEntity)
+                .sorted(Comparator.comparing(ConsultaDTOResponse::getDataHora).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -63,7 +63,7 @@ public class ConsultaService {
     }
 
     // Atualizar uma consulta existente
-    public Consulta atualizarConsulta(Long id, ConsultaDTO consultaDTO) {
+    public Consulta atualizarConsulta(Long id, ConsultaDTOResponse consultaDTO) {
         Consulta consultaExistente = buscarPorId(id);
 
         Medico medico = medicoRepository.findById(consultaDTO.getMedicoId())
@@ -80,19 +80,19 @@ public class ConsultaService {
         return consultaRepository.save(consultaExistente);
     }
 
-    public List<ConsultaDTO> listarConsultasPorMedico(Long medicoId) {
+    public List<ConsultaDTOResponse> listarConsultasPorMedico(Long medicoId) {
         return consultaRepository.findAllComMedicoEPaciente().stream()
                 .filter(c -> c.getMedico().getId().equals(medicoId))
-                .map(ConsultaDTO::fromEntity)
-                .sorted(Comparator.comparing(ConsultaDTO::getDataHora).reversed())
+                .map(ConsultaDTOResponse::fromEntity)
+                .sorted(Comparator.comparing(ConsultaDTOResponse::getDataHora).reversed())
                 .collect(Collectors.toList());
     }
 
-    public List<ConsultaDTO> listarConsultasPorPaciente(String cpf) {
+    public List<ConsultaDTOResponse> listarConsultasPorPaciente(String cpf) {
         List<Consulta> consultas = consultaRepository.findByPacienteCpf(cpf);
         return consultas.stream()
-                .map(ConsultaDTO::fromEntity)
-                .sorted(Comparator.comparing(ConsultaDTO::getDataHora).reversed())
+                .map(ConsultaDTOResponse::fromEntity)
+                .sorted(Comparator.comparing(ConsultaDTOResponse::getDataHora).reversed())
                 .collect(Collectors.toList());
     }
 

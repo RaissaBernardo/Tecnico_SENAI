@@ -10,17 +10,15 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ConsultaDTO {
+public class ConsultaDTOResponse {
     private Long id;
     private LocalDateTime dataHora;
     private String observacoes;
-    private Long medicoId;
-    private String nomeMedico;
-    private String pacienteCpf; // <- Aqui muda de pacienteId para pacienteCpf
-    private String nomePaciente;
+    private MedicoDTO medico;
+    private PacienteDTO pacienteDTO;
 
-    public static ConsultaDTO fromEntity(Consulta consulta) {
-        return new ConsultaDTO(
+    public static ConsultaDTOResponse fromEntity(Consulta consulta) {
+        return new ConsultaDTOResponse(
                 consulta.getId(),
                 consulta.getDataHora(),
                 consulta.getObservacoes(),
