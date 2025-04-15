@@ -5,8 +5,12 @@ export default class filme {
     constructor() {
     }
 
-    addItem(titulo, genero, ano, classificacao) {
-        this.#filme.push({ titulo, genero, ano, classificacao });
+    addItem(titulo, genero, ano) {
+        this.#filme.push({ titulo, genero, ano });
+    }
+
+    calcularTotal() {
+        return this.#filme;
     }
 
     getFilme() {

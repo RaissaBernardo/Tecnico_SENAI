@@ -1,5 +1,5 @@
 import filme from './filme.js';
-//não terminei
+//não terminei, mas eu tentei
 class atv7{
     #filme;
      constructor() {
@@ -23,7 +23,8 @@ class atv7{
     
             //finaliza
             document.getElementById('finalizar').addEventListener('click', () => {
-                document.getElementById('resultado').innerText = ${filme};
+                let total = this.#filme.calcularTotal();
+                document.getElementById('listaFilmes').innerText = `Filmes:  ${total}`;
             });
         }
     
