@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="js/atv5.js" defer></script>
+</head>
+<body>
+    <p>Selecione o produto</p>
+    <select id="produto">
+        <option value="Café"Café></option>
+        <option value="Leite">Leite</option>
+        <option value="Mateiga">Mateiga</option>
+        <option value="Biscoito">Biscoito</option>
+        <option value="Chocolate">Chocolate</option>
+        <option value="Água">Água</option>
+        <option value="Refrigerante">Refrigerante</option>
+        <option value="Arroz">Arroz</option>
+        <option value="Macarrão">Macarrão</option>
+        <option value="Feijão">Feijão</option>
+    </select>
+
+    <label for="escreva">Digite a quantidade desejada: </label>
+    <input type="number" id="quantidade" placeholder="Quantidade">
+    <label for="escreva">Digite o preço do produto: </label>
+    <input type="number" id="preco" placeholder="preco">
+
+    <button id="adicionar">Adicionar</button>
+    <button id="finalizar">Gerar compra</button>
+    <p id="resultado"></p>
+</body>
+</html>

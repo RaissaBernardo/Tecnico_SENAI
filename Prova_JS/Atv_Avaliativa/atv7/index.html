@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="js/atv7.js" defer></script>
+</head>
+<body>
+    <label for="tit">Digite o titulo do Livro</label>
+    <input type="text" id="titulo" placeholder="titulo">
+    <label for="gen">Digite o gênero do Livro</label>
+    <input type="text" id="genero" placeholder="genero">
+    <label for="an">Digite o ano do Livro</label>
+    <input type="number" id="ano" placeholder="ano">
+    <label for="tit">Digite s classificação do Livro</label>
+    <input type="number" id="classificacao" placeholder="classificacao">
+
+    <button id="adicionar">Cadastrar Filme</button>
+    <button id="finalizar">Finalizar</button>
+    <button onclick="cadastrar()">Cadastrar Filme</button>
+
+    <h3>Filmes: </h3>
+    <ul id="listaFilmes"></ul>
+</body>
+</html>

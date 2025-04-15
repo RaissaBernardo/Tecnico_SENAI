@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/atv6.js" defer></script>
+</head>
+<body>
+    <label for="numero">Digite o primeiro numero aqui</label>
+    <input type="number" id="num1" placeholder="Digite seu numero aqui">
+    <br/>
+    <label for="numeros">Digite o segundo numero aqui</label>
+    <input type="number" id="num2" placeholder="Digite seu numero aqui">
+    <br />
+    <select id="conta">
+        <option value="soma">Adição</option>
+        <option value="subtracao">Subtração</option>
+        <option value="multiplicao">Multiplicação</option>
+        <option value="divisao">Divisão</option>
+        <option value="potenciacao">Potenciação</option>
+        <option value="radiciacao">Radiciação</option>
+    </select>
+    <br /> 
+    <p></p>
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+</body>
+</html>
