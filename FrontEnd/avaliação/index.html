@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiaOlga</title>
+    <style>
+        #inicio {
+            color: rgb(0, 0, 0);
+            background-color: rgb(237, 204, 234);
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 20px;
+        }
+        #coelho{
+            display: inline-block;
+            margin-right: 20px;
+        }
+        #coelho2{
+            display: inline-block; 
+            margin-right: 20px;
+        }
+        #body{
+            background-color: rgb(244, 223, 239);
+            margin: 0;
+            padding: 0;
+        }
+        #escolhas {
+            margin: 0px 0 0 400px;
+            width: 70%;
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        #escolhas img {
+            width: 10%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: all ease-in-out 0.5s;
+        }
+        #escolhas img:hover {
+            width: 40%;
+        }
+        #nome{
+            color: rgb(236, 33, 144);
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            padding: 10px;
+            background-color: rgb(234, 206, 228);
+            margin-top: 80px;
+            border-radius: 60px;
+        }
+    </style>
+</head>
+<body id="body">
+    <header id="inicio">
+        <p>
+        <img id="coelho" src="fotos/coelholga.webp" width="150" height="150" align="left"><h1>Os melhores chocolates da região!!!</h1> 
+        <img id="coelho2" src="fotos/coelholga.webp" width="150" height="150" align="right"><h2>Confira as opções a baixo</h2>
+        <p id="nome">CHOCOLATES TIA OLGA</p>
+        </p>
+    </header>
+
+    <section id="escolhas">
+        <li>
+            <a href="ovos.html"><img src="fotos/ovosvdd.jpg"></a>
+            <a href="colher.html"><img src="fotos/colhervdd.jpg"></a>
+            <a href="cestas.html"><img src="fotos/cestas.jpg"></a>
+            <a href="info.html"><img src="fotos/infos.png"></a>
+        </li>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <img src="fotos/logo (1).png" width="150" height="150" /> 
+            <p>Uma páscoa mágica, é aqui na Tia Olga</p>
+        </div>
+    </footer>
+</body>
+</html>
