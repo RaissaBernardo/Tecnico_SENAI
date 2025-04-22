@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    padding: 2rem;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  
+  form input,
+  form button,
+  #pesquisa,
+  button {
+    margin: 0.5rem 0;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 0.5rem;
+    background: #e0e0e0;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
